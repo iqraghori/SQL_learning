@@ -12,3 +12,8 @@ from (
     group by user_id,month_number
 )t
 where rnk <= 2;
+
+-- 2. Create roll no from branch and marks
+select
+from 
+where
