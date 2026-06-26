@@ -1,4 +1,4 @@
-# SQL Learning & Practice Tracker 🚀
+# SQL Learning & Practice Tracker 
 
 Welcome to my SQL practice repository! This project serves as a daily tracker of my progress as I build data analysis skills, moving from core theory to real-world advanced interview problems.
 
