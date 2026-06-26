@@ -1,0 +1,9 @@
+select 
+    t.worker_title
+from worker w
+join title t
+    on w.worker_id = t.worker_ref_id
+group by
+    worker_ref_id
+order by w.salary desc 
+    limit 2
