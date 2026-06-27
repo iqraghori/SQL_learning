@@ -9,3 +9,31 @@ SELECT
     salary,
     AVG(salary) OVER(PARTITION BY department) AS avg_department_salary
 FROM employee;
+## Calculate Samantha's and Lisa's total sales revenue
+select sum(sales_revenue) as total_revenue
+from sales_performance
+where 
+    salesperson in ('Samantha','lisa')
+
+## Find all posts which were reacted to with a heart
+select fp.post_date, fp.post_id, fp.post_keywords, fp.post_text, fp.poster
+from facebook_reactions fr
+join facebook_posts fp 
+    on fr.post_id = fp.post_id
+where reaction = 'heart' limit 1
+
+## Finding Updated Records
+SELECT 
+    id, 
+    first_name, 
+    last_name, 
+    department_id, 
+    salary
+FROM ms_employee_salary
+WHERE (id, salary) IN (
+    -- This subquery finds the absolute max salary for each individual ID
+    SELECT id, MAX(salary)
+    FROM ms_employee_salary
+    GROUP BY id
+)
+ORDER BY id ASC;
