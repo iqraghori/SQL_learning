@@ -37,3 +37,10 @@ WHERE (id, salary) IN (
     GROUP BY id
 )
 ORDER BY id ASC;
+
+## Calculate Samantha's and Lisa's total sales revenue
+select sum(sales_revenue) as total_revenue
+from sales_performance
+where 
+    salesperson in ('Samantha','lisa')
+
