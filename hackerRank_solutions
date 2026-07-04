@@ -23,3 +23,8 @@ SELECT distinct city
 FROM station
 where substr(city,1,1) in ('a','e','i','o','u') AND
     substr(city,char_length(city),1) in ('a','e','i','o','u')
+
+-- Query the list of CITY names from STATION that do not end with vowels. Your result cannot contain duplicates.
+SELECT distinct city
+from station
+where substr(city,char_length(city),1) NOT IN ('a','e','i','o','u')
