@@ -28,3 +28,13 @@ where substr(city,1,1) in ('a','e','i','o','u') AND
 SELECT distinct city
 from station
 where substr(city,char_length(city),1) NOT IN ('a','e','i','o','u')
+
+-- Write a query that prints a list of employee names (i.e.: the name attribute) from the Employee table in alphabetical order.
+SELECT distinct name
+from students
+where(
+    select distinct right(name,3)
+    from student
+    where marks >75
+    order by id ASC
+);
