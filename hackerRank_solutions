@@ -70,3 +70,17 @@ when a=b or a=c or c=b then "Isosceles"
 else "Scalene"
 END
 FROM triangles;
+
+-- Query an alphabetically ordered list of all names in OCCUPATIONS, immediately followed by the first letter of each profession as a parenthetical (i.e.: enclosed in parentheses). For example: AnActorName(A), ADoctorName(D), AProfessorName(P), and ASingerName(S).Query the number of ocurrences of each occupation in OCCUPATIONS. Sort the occurrences in ascendin
+SELECT
+    concat(name,'(',left(occupation,1),')')
+from occupations
+ORDER BY name ASC;
+SELECT 
+    concat("There are a total of ",count(occupation)," ",lower(occupation),'s.')
+FROM occupations
+group by 
+    occupation
+order by 
+    count(occupation) ASC,
+    occupation ASC;
