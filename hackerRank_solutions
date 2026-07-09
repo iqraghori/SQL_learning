@@ -84,3 +84,20 @@ group by
 order by 
     count(occupation) ASC,
     occupation ASC;
+
+-- the Occupation column in OCCUPATIONS so that each Name is sorted alphabetically and displayed underneath its corresponding Occupation. The output should consist of four columns (Doctor, Professor, Singer, and Actor) in that specific order, with their respective names listed alphabetically under each column.
+-- Note: Print NULL when there are no more names corresponding to an occupation.
+WITH ranked_occupations AS (
+    SELECT
+        name,
+        occupation,
+        row_number() over (partition by occupation order by name) as row_num
+    from occupations
+)
+SELECT 
+    max(case when occupation = 'Doctor' then name end) as Doctor,
+    max(case when occupation = 'Professor' then name end),
+    max(case when occupation = 'Singer' then name end),
+    max(case when occupation = 'Actor' then name end) as Actor
+from ranked_occupations
+group by row_num;
