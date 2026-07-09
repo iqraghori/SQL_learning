@@ -101,3 +101,15 @@ SELECT
     max(case when occupation = 'Actor' then name end) as Actor
 from ranked_occupations
 group by row_num;
+
+-- Write a query to find the node type of Binary Tree ordered by the value of the node. Output one of the following for each node:
+-- Root: If node is root node.
+-- Leaf: If node is leaf node.
+-- Inner: If node is neither root nor leaf node.
+SELECT n,case
+    when  p is null then "Root"
+    when n in (select p from BST) THEN "Inner"
+    else "Leaf"
+END
+from BST
+ORDER BY n ASC;
