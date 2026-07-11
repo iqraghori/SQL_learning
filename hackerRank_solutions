@@ -137,3 +137,15 @@ SELECT ROUND(
         POW(MAX(LONG_W) - MIN(LONG_W), 2)
     ),4)
 FROM STATION;
+
+-- A median is defined as a number separating the higher half of a data set from the lower half. Query the median of the Northern Latitudes (LAT_N) from STATION and round your answer to  decimal places.
+WITH order_LAT_N as ( 
+    SELECT 
+        LAT_N,
+        row_number() OVER (order by LAT_N ASC) as row_num,
+        count(*) over () as total_N
+    FROM station
+)
+SELECT round(LAT_N,4)
+FROM order_LAT_N
+where row_num = round(total_N/2);
